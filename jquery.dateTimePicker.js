@@ -1,70 +1,73 @@
-var dateTimeCallingElement = function(wrapper) {
-  var id = wrapper.attr('id');
-  id = id.replace('_picker','');
-  return jQuery('#' + id);
-};
+var DateTimePicker = {
+  dateTimeCallingElement: function(wrapper) {
+    var id = wrapper.attr('id');
+    id = id.replace('_picker','');
+    return jQuery('#' + id);
+  },
 
-var removeWrappersAndStopPropagation = function(event) {
-  jQuery('.dateTimePickerWrapper').remove();      
-  event.stopPropagation();
-};
+  removeWrappersAndStopPropagation: function(event) {
+    jQuery('.dateTimePickerWrapper').remove();      
+    event.stopPropagation();
+  },
 
-var checkAndRemoveWrapper = function(event) {
-  var target = jQuery(event.target);
-  if (event.target.tagName == 'INPUT') {
-    if (target.data("dateTimePicker") == undefined) {
-      removeWrappersAndStopPropagation(event);
+  checkAndRemoveWrapper: function(event) {
+    var target = jQuery(event.target);
+    if (event.target.tagName == 'INPUT') {
+      if (target.data("dateTimePicker") == undefined) {
+        DateTimePicker.removeWrappersAndStopPropagation(event);
+      }
+    } else if (!target.hasClass('.dateTimePickerWrapper') && !target.parent().hasClass('.dateTimePickerWrapper') && !target.parent().parent().hasClass('.dateTimePickerWrapper')) {
+      DateTimePicker.removeWrappersAndStopPropagation(event);
     }
-  } else if (!target.hasClass('.dateTimePickerWrapper') && !target.parent().hasClass('.dateTimePickerWrapper') && !target.parent().parent().hasClass('.dateTimePickerWrapper')) {
-    removeWrappersAndStopPropagation(event);
   }
 };
 
 jQuery(function(){
+
   jQuery('*').focus(function(e) {
-    checkAndRemoveWrapper(e);
+    DateTimePicker.checkAndRemoveWrapper(e);
   }).click(function(e) {
-    checkAndRemoveWrapper(e);
+    DateTimePicker.checkAndRemoveWrapper(e);
   });
 
   jQuery('.dateTimePickerWrapper .weekday, .dateTimePickerWrapper .weekend').live('click',function(){
     var wrapper = jQuery(this).parent();
-    dateTimeCallingElement(wrapper).dateTimePicker('clickDay', jQuery(this));
+    DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('clickDay', jQuery(this));
   });
   
   jQuery('.dateTimePickerWrapper .amSelector, .dateTimePickerWrapper .pmSelector').live('click', function() {
     var wrapper = jQuery(this).parent().parent();
-    dateTimeCallingElement(wrapper).dateTimePicker('clickAmPm', jQuery(this));
+    DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('clickAmPm', jQuery(this));
   });
 
   jQuery('.dateTimePickerWrapper .hour').live('click', function() {
     var wrapper = jQuery(this).parent().parent();
-    dateTimeCallingElement(wrapper).dateTimePicker('clickHour', jQuery(this));
+    DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('clickHour', jQuery(this));
   });
   
   jQuery('.dateTimePickerWrapper .minute').live('click', function() {
     var wrapper = jQuery(this).parent().parent();
-    dateTimeCallingElement(wrapper).dateTimePicker('clickMinute', jQuery(this));
+    DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('clickMinute', jQuery(this));
   });
 
   jQuery('.dateTimePickerWrapper .prevYear').live('click',function(){
     var wrapper = jQuery(this).parent().parent();
-    dateTimeCallingElement(wrapper).dateTimePicker('changeMonth', -12);
+    DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('changeMonth', -12);
   });
   
   jQuery('.dateTimePickerWrapper .prevMonth').live('click',function(){
     var wrapper = jQuery(this).parent().parent();
-    dateTimeCallingElement(wrapper).dateTimePicker('changeMonth', -1);
+    DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('changeMonth', -1);
   });
 
   jQuery('.dateTimePickerWrapper .nextMonth').live('click',function(){
     var wrapper = jQuery(this).parent().parent();
-    dateTimeCallingElement(wrapper).dateTimePicker('changeMonth', 1);
+    DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('changeMonth', 1);
   });
 
   jQuery('.dateTimePickerWrapper .nextYear').live('click',function(){
     var wrapper = jQuery(this).parent().parent();
-    dateTimeCallingElement(wrapper).dateTimePicker('changeMonth', 12);
+    DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('changeMonth', 12);
   });
 });
 
