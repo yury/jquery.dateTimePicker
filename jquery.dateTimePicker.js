@@ -1,5 +1,6 @@
 var dateTimeCallingElement = function(wrapper) {
   var id = wrapper.attr('id');
+  id = id.replace('_picker','');
   return jQuery('#' + id);
 };
 
@@ -178,7 +179,7 @@ $.widget("ui.dateTimePicker", {
     var topOffset = offset.top;
     var leftOffset = offset.left + this.element.outerWidth();
     var newElement = jQuery('body').createAppend(
-      'div', {  id: this.element.attr('id'), 
+      'div', {  id: this.element.attr('id') + '_picker', 
                 className: 'dateTimePickerWrapper' 
               }, this._getPicker()
     );
