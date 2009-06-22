@@ -1,1 +1,84 @@
-/home/jsharpe/veloracing/public/stylesheets/sass/dateTimePicker.sass
+@import includes
+!px= px
+!width_px= 189
+!width= !width_px + !px
+!unit_height= 16px
+
+.dateTimePickerWrapper
+  :position absolute
+  :background white
+  :color black
+  :outline solid 1px
+    :color= !light_red
+  :border-left solid black
+  :border-right solid black
+  :border-bottom solid black
+  :border-width 1px
+  :text-align center
+  :font-size= (!width_px / 17) + !px
+  :overflow hidden
+  :width= !width
+  .weekend
+    :background #ccc
+  .today
+    :background purple
+  .selectedHour
+    :background green
+  .selectedMinute
+    :background pink
+  .selectedAmPm
+    :background yellow
+  .selectedDay
+    :background orange
+  .hour, .minute, .weekday, .weekend, .headerRow, .daysRow
+    :line-height= !unit_height
+    :height= !unit_height
+  .prevYear, .prevMonth, .nextMonth, .nextYear, .weekend, .weekday, .hour, .minute, .amSelector, .pmSelector
+    :cursor pointer
+  .headerRow, .daysRow
+    :border-bottom solid 1px black
+    :float left
+    :clear left
+    :width= !width
+  .headerRow
+    :border-top solid 1px black
+    .prevYear, .prevMonth, .nextMonth, .nextYear, .monthName
+      :float left
+    .prevYear, .prevMonth, .nextMonth, .nextYear
+      :width= (!width_px / 8) + !px
+    .monthName
+      :width= (!width_px / 2) + !px
+  .daysRow
+    .dayHeading
+      :float left
+      :width= (!width_px / 7) + !px
+  .weekend, .weekday, .bufferDay
+    :float left
+    :width= (!width_px / 7) + !px
+  .minuteHeading, .hourHeading
+    :width 100%
+    :border-bottom solid 1px black
+  .hourSelector, .minuteSelector
+    :width= ((!width_px / 2) - 1) + !px
+    :float left
+    :border-top solid 1px black
+  .hourSelector
+    :clear left
+  .minuteSelector
+    :border-left solid 1px black
+  .hour, .minute
+    :width= (!width_px / 6) + !px
+    :float left
+  .amSelector, .pmSelector
+    :border-top solid 1px black
+    :width= ((!width_px / 4) - 1) + !px
+    :float left
+  .amSelector
+  .pmSelector
+    :border-left solid 1px black
+  .closeSelector
+    :width= (!width_px / 2) + !px
+    :float left
+    :border-top solid 1px black
+
+
