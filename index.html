@@ -2,16 +2,27 @@
 <html xmlns='http://www.w3.org/1999/xhtml'>
   <head>
     <title>jquery.dateTimePicker</title>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="jquery-ui-1.7.2.custom.min.js"></script>
+    <script type="text/javascript" src="jquery.flydom.js"></script>
+    <script type="text/javascript" src="http://github.com/crankharder/jquery.dateTimePicker.git/jquery.dateTimePicker.js"></script>
+
+    <link href="http://github.com/crankharder/jquery.dateTimePicker.git/dateTimePicker.css" media="screen" rel="stylesheet" type="text/css" />
+    <style type='text/css'>
+      label{width:150px;display:inline-block;}
+    </style>
     <script type="text/javascript">
-      $('#datetimepicker').css('color','green').dateTimePicker();
-      $('#datepicker').dateTimePicker({showTime: false});
-      $('#timepicker').dateTimePicker({showDate: false});      
+      $(function(){
+        $('#datetimepicker').dateTimePicker();
+        $('#datepicker').dateTimePicker({showTime: false});
+        $('#timepicker').dateTimePicker({showDate: false});      
+      });
     </script>
   </head>
   <body>
     <h2>jquery.DateTimePicker</h2>
     <p>I had the need for all three varieities:</p>
+    <p>The design and functionality was inspired by <a href='http://www.simpltry.com/'>Schlu</a>.</p>
     <ul>
       <li>A DateTime Picker</li>
       <li>A Date Picker</li>
@@ -19,9 +30,20 @@
     </ul>
     <p>The idea was to be simple, not flashy and styleable.</p>
     <p>I use SASS, but I've included the generated CSS in the repo as well.</p>
+    <p><label for='datetimepicker'>Date-Time Picker</label>   <input type='text' id='datetimepicker' /></p>
+    <p><label for='datetimepicker'>Date Picker</label>        <input type='text' id='datepicker' /></p>
+    <p><label for='datetimepicker'>Date Picker</label>        <input type='text' id='timepicker' /></p>
 
-    <p><input type='text' id='datetimepicker' /></p>
-    <p><input type='text' id='datepicker' /></p>
-    <p><input type='text' id='timepicker' /></p>
+    <h3>Dependencies</h3>
+    <ul>
+      <li><a href='http://jqueryui.com/download'>jQuery UI</a></li>
+      <li><a href='http://dohpaz.com/flydom/'>FlyDOM</a></li>
+    </ul>
+        
+    <h3>Known Issues</h3>
+    <ul>
+      <li>The height of the date picker changes weirdly as you change months.</li>
+    </ul>
+
   </body>
 </html>
