@@ -1,1 +1,27 @@
-My GitHub Page
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title>jquery.dateTimePicker</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+    <script type="text/javascript">
+      $('#datetimepicker').css('color','green').dateTimePicker();
+      $('#datepicker').dateTimePicker({showTime: false});
+      $('#timepicker').dateTimePicker({showDate: false});      
+    </script>
+  </head>
+  <body>
+    <h2>jquery.DateTimePicker</h2>
+    <p>I had the need for all three varieities:</p>
+    <ul>
+      <li>A DateTime Picker</li>
+      <li>A Date Picker</li>
+      <li>A Time Picker</li>
+    </ul>
+    <p>The idea was to be simple, not flashy and styleable.</p>
+    <p>I use SASS, but I've included the generated CSS in the repo as well.</p>
+
+    <p><input type='text' id='datetimepicker' /></p>
+    <p><input type='text' id='datepicker' /></p>
+    <p><input type='text' id='timepicker' /></p>
+  </body>
+</html>
