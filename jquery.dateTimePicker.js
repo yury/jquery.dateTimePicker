@@ -87,7 +87,7 @@ $.widget("ui.dateTimePicker", {
   
   _currentValueToCurrentDate: function() {
     var dateVal = this.element.val();
-    if (dateVal != '') {
+    if (dateVal !== '') {
       if (dateVal.search("at") > 0) {
         dateVal = dateVal.replace(/at.*/, "");
       }
@@ -109,7 +109,7 @@ $.widget("ui.dateTimePicker", {
   
   _setInputAndClose: function() {
     this._getData('newElement').remove();
-    this.element.removeClass('watermark')
+    this.element.removeClass('watermark');
 
     if (this._getData('showDate') && this._getData('showTime')) {
       if (this._getData('day') && this._getData('hour') && this._getData('minute') && this._getData('ampm')) {
@@ -165,15 +165,15 @@ $.widget("ui.dateTimePicker", {
   },
   
   clickMinute: function(minuteElement) {
-    minuteElement.parent().children('.selectedMinute').removeClass('selectedMinute')
-    minuteElement.addClass('selectedMinute')
+    minuteElement.parent().children('.selectedMinute').removeClass('selectedMinute');
+    minuteElement.addClass('selectedMinute');
     this._setData('minute', minuteElement.html());
     this._checkForCompletion();
   },
   
   clickHour: function(hourElement) {
-    hourElement.parent().children('.selectedHour').removeClass('selectedHour')
-    hourElement.addClass('selectedHour')
+    hourElement.parent().children('.selectedHour').removeClass('selectedHour');
+    hourElement.addClass('selectedHour');
     this._setData('hour', hourElement.html());
     this._checkForCompletion();
   },
@@ -186,7 +186,7 @@ $.widget("ui.dateTimePicker", {
       'div', {  id: this.element.attr('id') + '_picker', 
                 className: 'dateTimePickerWrapper' 
               }, this._getPicker()
-    ).hide().fadeIn('fast');
+    );
     newElement.css("top", (topOffset - (newElement.outerHeight()) + (this.element.outerHeight())) + 'px');
     newElement.css("left",(leftOffset + 10) + 'px');
 
@@ -217,11 +217,11 @@ $.widget("ui.dateTimePicker", {
   },
   
   _drawTimeSelector: function() {
-    return this._drawHourSelector().concat(this._drawMinuteSelector())
+    return this._drawHourSelector().concat(this._drawMinuteSelector());
   },
   
   _drawCalendar: function(date) {
-    return this._drawHeader(date).concat(this._drawDaysRow()).concat(this._drawCalendarBody(date))
+    return this._drawHeader(date).concat(this._drawDaysRow()).concat(this._drawCalendarBody(date));
   },
 
   _drawHeader: function(date) {
@@ -233,7 +233,7 @@ $.widget("ui.dateTimePicker", {
         'div', { className: 'nextMonth'}, '>',
         'div', { className: 'nextYear'}, '>>'
       ]
-    ]
+    ];
   },
 
   _drawDaysRow: function() {
@@ -250,19 +250,20 @@ $.widget("ui.dateTimePicker", {
   
   _getPreviousMonth: function(date){
     var currentMonth = date.getMonth();
+    var previousMonth;
     if(currentMonth === 0) {
-      var previousMonth = 11;
+      previousMonth = 11;
     } else {
-      var previousMonth = currentMonth - 1;
+      previousMonth = currentMonth - 1;
     }
     return previousMonth;
   },
 
   _drawCalendarBody: function(date) {
-    days = []
+    days = [];
     var todaysDate = this._getData('todaysDate');
     var currentDate = this._getData('currentDate');
-    var isCurrentMonth = (todaysDate.getFullYear() === currentDate.getFullYear() && todaysDate.getMonth() === currentDate.getMonth())
+    var isCurrentMonth = (todaysDate.getFullYear() === currentDate.getFullYear() && todaysDate.getMonth() === currentDate.getMonth());
     var totalCount = 0;
     
     var bufferCount = date.getDay();
@@ -275,16 +276,12 @@ $.widget("ui.dateTimePicker", {
       totalCount += 1;
     }
     for (i = 1; i <= this._daysInMonth(date.getMonth()); i++) {
-      var className = ''
+      var className = '';
       days.push('div');
       if ((totalCount) % 7 === 0 || (1 + totalCount) % 7 === 0) {
         className = 'weekend';
       } else {
         className = 'weekday';
-      }
-      if ((totalCount + 1) % 7 === 0) {
-        className += ' sunday';
-      
       }
       if (isCurrentMonth && (todaysDate.getDate() === i)) {
         className += " today";
@@ -300,7 +297,7 @@ $.widget("ui.dateTimePicker", {
       days.push(i + '');
     }
 
-    return days
+    return days;
   },
   
   _drawHourSelector: function(){
