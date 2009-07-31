@@ -9,11 +9,13 @@
   border-bottom: solid black;
   border-width: 1px;
   text-align: center;
-  font-size: 11.176px;
+  font-size: 11.765px;
   overflow: hidden;
-  width: 192px; }
+  width: 200px; }
   .dateTimePickerWrapper .weekend {
-    background: #ccc; }
+    background: #ddd; }
+  .dateTimePickerWrapper .bufferDay {
+    color: #9d9d9d; }
   .dateTimePickerWrapper .today {
     background: purple; }
   .dateTimePickerWrapper .selectedHour {
@@ -24,7 +26,7 @@
     background: yellow; }
   .dateTimePickerWrapper .selectedDay {
     background: orange; }
-  .dateTimePickerWrapper .hour, .dateTimePickerWrapper .minute, .dateTimePickerWrapper .weekday, .dateTimePickerWrapper .weekend, .dateTimePickerWrapper .headerRow, .dateTimePickerWrapper .daysRow {
+  .dateTimePickerWrapper .hour, .dateTimePickerWrapper .minute, .dateTimePickerWrapper .weekday, .dateTimePickerWrapper .weekend, .dateTimePickerWrapper .headerRow, .dateTimePickerWrapper .daysRow, .dateTimePickerWrapper .bufferDay {
     line-height: 16px;
     height: 16px; }
   .dateTimePickerWrapper .prevYear, .dateTimePickerWrapper .prevMonth, .dateTimePickerWrapper .nextMonth, .dateTimePickerWrapper .nextYear, .dateTimePickerWrapper .weekend, .dateTimePickerWrapper .weekday, .dateTimePickerWrapper .hour, .dateTimePickerWrapper .minute, .dateTimePickerWrapper .amSelector, .dateTimePickerWrapper .pmSelector {
@@ -33,26 +35,29 @@
     border-bottom: solid 1px black;
     float: left;
     clear: left;
-    width: 190px; }
+    width: 200px; }
   .dateTimePickerWrapper .headerRow {
+    background-color: #ececec;
     border-top: solid 1px black; }
     .dateTimePickerWrapper .headerRow .prevYear, .dateTimePickerWrapper .headerRow .prevMonth, .dateTimePickerWrapper .headerRow .nextMonth, .dateTimePickerWrapper .headerRow .nextYear, .dateTimePickerWrapper .headerRow .monthName {
       float: left; }
     .dateTimePickerWrapper .headerRow .prevYear, .dateTimePickerWrapper .headerRow .prevMonth, .dateTimePickerWrapper .headerRow .nextMonth, .dateTimePickerWrapper .headerRow .nextYear {
-      width: 23.75px; }
+      width: 25px; }
     .dateTimePickerWrapper .headerRow .monthName {
-      width: 95px; }
-  .dateTimePickerWrapper .daysRow .dayHeading {
-    float: left;
-    width: 27.143px; }
+      width: 100px; }
+  .dateTimePickerWrapper .daysRow {
+    background-color: #cacaca; }
+    .dateTimePickerWrapper .daysRow .dayHeading {
+      float: left;
+      width: 28.571px; }
   .dateTimePickerWrapper .weekend, .dateTimePickerWrapper .weekday, .dateTimePickerWrapper .bufferDay {
     float: left;
-    width: 27.143px; }
+    width: 28.571px; }
   .dateTimePickerWrapper .minuteHeading, .dateTimePickerWrapper .hourHeading {
     width: 100%;
     border-bottom: solid 1px black; }
   .dateTimePickerWrapper .hourSelector, .dateTimePickerWrapper .minuteSelector {
-    width: 95px;
+    width: 99px;
     float: left;
     border-top: solid 1px black; }
   .dateTimePickerWrapper .hourSelector {
@@ -60,15 +65,15 @@
   .dateTimePickerWrapper .minuteSelector {
     border-left: solid 1px black; }
   .dateTimePickerWrapper .hour, .dateTimePickerWrapper .minute {
-    width: 31.667px;
+    width: 32.333px;
     float: left; }
   .dateTimePickerWrapper .amSelector, .dateTimePickerWrapper .pmSelector {
     border-top: solid 1px black;
-    width: 46.5px;
+    width: 49px;
     float: left; }
   .dateTimePickerWrapper .pmSelector {
     border-left: solid 1px black; }
   .dateTimePickerWrapper .closeSelector {
-    width: 95px;
+    width: 100px;
     float: left;
     border-top: solid 1px black; }
