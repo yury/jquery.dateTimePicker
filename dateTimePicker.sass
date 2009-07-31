@@ -1,7 +1,5 @@
 @import includes
-!px= px
-!width_px= 189
-!width= !width_px + !px
+!width= 200px
 !unit_height= 16px
 
 .dateTimePickerWrapper
@@ -15,11 +13,13 @@
   :border-bottom solid black
   :border-width 1px
   :text-align center
-  :font-size= (!width_px / 17) + !px
+  :font-size= !width / 17
   :overflow hidden
   :width= !width
   .weekend
-    :background #ccc
+    :background #ddd
+  .bufferDay
+    :color #9d9d9d
   .today
     :background purple
   .selectedHour
@@ -30,7 +30,7 @@
     :background yellow
   .selectedDay
     :background orange
-  .hour, .minute, .weekday, .weekend, .headerRow, .daysRow
+  .hour, .minute, .weekday, .weekend, .headerRow, .daysRow, .bufferDay
     :line-height= !unit_height
     :height= !unit_height
   .prevYear, .prevMonth, .nextMonth, .nextYear, .weekend, .weekday, .hour, .minute, .amSelector, .pmSelector
@@ -41,25 +41,27 @@
     :clear left
     :width= !width
   .headerRow
+    :background-color #ececec
     :border-top solid 1px black
     .prevYear, .prevMonth, .nextMonth, .nextYear, .monthName
       :float left
     .prevYear, .prevMonth, .nextMonth, .nextYear
-      :width= (!width_px / 8) + !px
+      :width= !width / 8
     .monthName
-      :width= (!width_px / 2) + !px
+      :width= !width / 2
   .daysRow
+    :background-color #cacaca
     .dayHeading
       :float left
-      :width= (!width_px / 7) + !px
+      :width= !width / 7
   .weekend, .weekday, .bufferDay
     :float left
-    :width= (!width_px / 7) + !px
+    :width= !width / 7
   .minuteHeading, .hourHeading
     :width 100%
     :border-bottom solid 1px black
   .hourSelector, .minuteSelector
-    :width= ((!width_px / 2) - 1) + !px
+    :width= (!width / 2) - 1
     :float left
     :border-top solid 1px black
   .hourSelector
@@ -67,18 +69,16 @@
   .minuteSelector
     :border-left solid 1px black
   .hour, .minute
-    :width= (!width_px / 6) + !px
+    :width= (!width / 6) - 1
     :float left
   .amSelector, .pmSelector
     :border-top solid 1px black
-    :width= ((!width_px / 4) - 1) + !px
+    :width= (!width / 4) - 1
     :float left
   .amSelector
   .pmSelector
     :border-left solid 1px black
   .closeSelector
-    :width= (!width_px / 2) + !px
+    :width= !width / 2
     :float left
     :border-top solid 1px black
-
-

@@ -6,14 +6,14 @@ var DateTimePicker = {
   },
 
   removeWrappersAndStopPropagation: function(event) {
-    jQuery('.dateTimePickerWrapper').remove();      
+    jQuery('.dateTimePickerWrapper').fadeOut('fast');
     event.stopPropagation();
   },
 
   checkAndRemoveWrapper: function(event) {
     var target = jQuery(event.target);
-    if (event.target.tagName == 'INPUT') {
-      if (target.data("dateTimePicker") == undefined) {
+    if (event.target.tagName === 'INPUT') {
+      if (target.data("dateTimePicker") === undefined) {
         DateTimePicker.removeWrappersAndStopPropagation(event);
       }
     } else if (!target.hasClass('.dateTimePickerWrapper') && !target.parent().hasClass('.dateTimePickerWrapper') && !target.parent().parent().hasClass('.dateTimePickerWrapper')) {
@@ -109,6 +109,7 @@ $.widget("ui.dateTimePicker", {
   
   _setInputAndClose: function() {
     this._getData('newElement').remove();
+    this.element.removeClass('watermark')
 
     if (this._getData('showDate') && this._getData('showTime')) {
       if (this._getData('day') && this._getData('hour') && this._getData('minute') && this._getData('ampm')) {
@@ -185,7 +186,7 @@ $.widget("ui.dateTimePicker", {
       'div', {  id: this.element.attr('id') + '_picker', 
                 className: 'dateTimePickerWrapper' 
               }, this._getPicker()
-    );
+    ).hide().fadeIn('fast');
     newElement.css("top", (topOffset - (newElement.outerHeight()) + (this.element.outerHeight())) + 'px');
     newElement.css("left",(leftOffset + 10) + 'px');
 
@@ -246,37 +247,62 @@ $.widget("ui.dateTimePicker", {
       'div', { className: 'daysRow'}, daysRow
     ];
   },
+  
+  _getPreviousMonth: function(date){
+    var currentMonth = date.getMonth();
+    if(currentMonth === 0) {
+      var previousMonth = 11;
+    } else {
+      var previousMonth = currentMonth - 1;
+    }
+    return previousMonth;
+  },
 
   _drawCalendarBody: function(date) {
     days = []
     var todaysDate = this._getData('todaysDate');
     var currentDate = this._getData('currentDate');
-    var isCurrentMonth = (todaysDate.getFullYear() == currentDate.getFullYear() && todaysDate.getMonth() == currentDate.getMonth())
+    var isCurrentMonth = (todaysDate.getFullYear() === currentDate.getFullYear() && todaysDate.getMonth() === currentDate.getMonth())
+    var totalCount = 0;
     
-    bufferCount = date.getDay();
+    var bufferCount = date.getDay();
+    var bufferStartNumber = this._getData('daysInMonth')[this._getPreviousMonth(date)] - date.getDay() + 1;
     for (i = 1; i <= bufferCount; i++) {
       days.push('div');
       days.push({className: 'bufferDay'});
-      days.push('&nbsp;');
+      days.push(bufferStartNumber + '');
+      bufferStartNumber += 1;
+      totalCount += 1;
     }
     for (i = 1; i <= this._daysInMonth(date.getMonth()); i++) {
       var className = ''
       days.push('div');
-      if ((i + bufferCount) % 7 == 0 || (i - 1 + bufferCount) % 7 == 0) {
+      if ((totalCount) % 7 === 0 || (1 + totalCount) % 7 === 0) {
         className = 'weekend';
       } else {
         className = 'weekday';
       }
-      if (isCurrentMonth && (todaysDate.getDate() == i)) {
+      if ((totalCount + 1) % 7 === 0) {
+        className += ' sunday';
+      
+      }
+      if (isCurrentMonth && (todaysDate.getDate() === i)) {
         className += " today";
       }
       days.push({className: className});
+      days.push(i + '');
+      totalCount += 1;
+    }
+    
+    for (i = 1; i <= 42 - totalCount; i++) {
+      days.push('div');
+      days.push({className: 'bufferDay'});
       days.push(i + '');
     }
 
     return days
   },
-
+  
   _drawHourSelector: function(){
     hours = ['div', {className: 'hourHeading'}, 'Hour'];
     for (i in this._getData('hours')) {
