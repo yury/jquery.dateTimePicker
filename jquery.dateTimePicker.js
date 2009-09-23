@@ -4,12 +4,12 @@ var DateTimePicker = {
     id = id.replace('_picker','');
     return jQuery('#' + id);
   },
-
+ 
   removeWrappersAndStopPropagation: function(event) {
     jQuery('.dateTimePickerWrapper').fadeOut('fast');
     event.stopPropagation();
   },
-
+ 
   checkAndRemoveWrapper: function(event) {
     var target = jQuery(event.target);
     if (event.target.tagName === 'INPUT') {
@@ -21,10 +21,9 @@ var DateTimePicker = {
     }
   }
 };
-
+ 
 jQuery(function(){
-
-  jQuery('*').focus(function(e) {
+  jQuery('body').focus(function(e) {
     DateTimePicker.checkAndRemoveWrapper(e);
   }).click(function(e) {
     DateTimePicker.checkAndRemoveWrapper(e);
@@ -39,7 +38,7 @@ jQuery(function(){
     var wrapper = jQuery(this).parent().parent();
     DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('clickAmPm', jQuery(this));
   });
-
+ 
   jQuery('.dateTimePickerWrapper .hour').live('click', function() {
     var wrapper = jQuery(this).parent().parent();
     DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('clickHour', jQuery(this));
@@ -49,7 +48,7 @@ jQuery(function(){
     var wrapper = jQuery(this).parent().parent();
     DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('clickMinute', jQuery(this));
   });
-
+ 
   jQuery('.dateTimePickerWrapper .prevYear').live('click',function(){
     var wrapper = jQuery(this).parent().parent();
     DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('changeMonth', -12);
@@ -59,24 +58,24 @@ jQuery(function(){
     var wrapper = jQuery(this).parent().parent();
     DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('changeMonth', -1);
   });
-
+ 
   jQuery('.dateTimePickerWrapper .nextMonth').live('click',function(){
     var wrapper = jQuery(this).parent().parent();
     DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('changeMonth', 1);
   });
-
+ 
   jQuery('.dateTimePickerWrapper .nextYear').live('click',function(){
     var wrapper = jQuery(this).parent().parent();
     DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('changeMonth', 12);
   });
 });
-
+ 
 $.widget("ui.dateTimePicker", {
-  _init: function() { 
+  _init: function() {
     this._setData('todaysDate', new Date());
     this._setData('currentDate', new Date());
     this._currentValueToCurrentDate();
-
+ 
     var thisWidget = this;
     this.element.focus(function() {
       thisWidget._resetDefaults();
@@ -110,7 +109,7 @@ $.widget("ui.dateTimePicker", {
   _setInputAndClose: function() {
     this._getData('newElement').remove();
     this.element.removeClass('watermark');
-
+ 
     if (this._getData('showDate') && this._getData('showTime')) {
       if (this._getData('day') && this._getData('hour') && this._getData('minute') && this._getData('ampm')) {
         this.element.val(this._buildDate() + ' at ' + this._buildTime());
@@ -183,16 +182,16 @@ $.widget("ui.dateTimePicker", {
     var topOffset = offset.top;
     var leftOffset = offset.left + this.element.outerWidth();
     var newElement = jQuery('body').createAppend(
-      'div', {  id: this.element.attr('id') + '_picker', 
-                className: 'dateTimePickerWrapper' 
+      'div', { id: this.element.attr('id') + '_picker',
+                className: 'dateTimePickerWrapper'
               }, this._getPicker()
     );
     newElement.css("top", (topOffset - (newElement.outerHeight()) + (this.element.outerHeight())) + 'px');
     newElement.css("left",(leftOffset + 10) + 'px');
-
+ 
     this._setData('newElement',newElement);
   },
-
+ 
   changeMonth: function(monthChange){
     this._getData('newElement').remove();
     date = this._getCurrentDate();
@@ -204,7 +203,7 @@ $.widget("ui.dateTimePicker", {
     this._setData('currentDate',date);
     this.createDateTimePicker();
   },
-
+ 
   _getPicker: function() {
     if (this._getData('showDate') && this._getData('showTime')) {
       picker = this._drawCalendar(this._getCurrentDate()).concat(this._drawTimeSelector());
@@ -223,7 +222,7 @@ $.widget("ui.dateTimePicker", {
   _drawCalendar: function(date) {
     return this._drawHeader(date).concat(this._drawDaysRow()).concat(this._drawCalendarBody(date));
   },
-
+ 
   _drawHeader: function(date) {
     return [
       'div', { className: 'headerRow'}, [
@@ -235,7 +234,7 @@ $.widget("ui.dateTimePicker", {
       ]
     ];
   },
-
+ 
   _drawDaysRow: function() {
     var daysRow = [];
     for (day in this._getDays()) {
@@ -258,7 +257,7 @@ $.widget("ui.dateTimePicker", {
     }
     return previousMonth;
   },
-
+ 
   _drawCalendarBody: function(date) {
     days = [];
     var todaysDate = this._getData('todaysDate');
@@ -296,7 +295,7 @@ $.widget("ui.dateTimePicker", {
       days.push({className: 'bufferDay'});
       days.push(i + '');
     }
-
+ 
     return days;
   },
   
@@ -328,11 +327,11 @@ $.widget("ui.dateTimePicker", {
     minutes.push('&nbsp;');
     return ['div', { className: 'minuteSelector'}, minutes];
   },
-
+ 
   _getCurrentDate: function() {
     return this._getData('currentDate');
   },
-
+ 
   _getDays: function() {
     return this._getData('days');
   },
@@ -349,8 +348,8 @@ $.widget("ui.dateTimePicker", {
     return this._getData('showTime');
   }
 });
-
-$.ui.dateTimePicker.defaults = { 
+ 
+$.ui.dateTimePicker.defaults = {
   months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
   daysInMonth: [31, 28, 31, 30, 31 ,30, 31, 31, 30, 31, 30, 31],
   days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
@@ -359,3 +358,4 @@ $.ui.dateTimePicker.defaults = {
   showDate: true,
   showTime: true
 };
+ 

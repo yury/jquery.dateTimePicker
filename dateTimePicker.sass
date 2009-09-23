@@ -1,7 +1,7 @@
 @import includes
 !width= 200px
 !unit_height= 16px
-
+ 
 .dateTimePickerWrapper
   :position absolute
   :background white
@@ -21,15 +21,15 @@
   .bufferDay
     :color #9d9d9d
   .today
-    :background purple
+    :background #989898
   .selectedHour
-    :background green
+    :background= !dark_red
   .selectedMinute
-    :background pink
+    :background= !dark_red
   .selectedAmPm
-    :background yellow
+    :background= !dark_red
   .selectedDay
-    :background orange
+    :background= !dark_red
   .hour, .minute, .weekday, .weekend, .headerRow, .daysRow, .bufferDay
     :line-height= !unit_height
     :height= !unit_height
@@ -73,10 +73,11 @@
     :float left
   .amSelector, .pmSelector
     :border-top solid 1px black
-    :width= (!width / 4) - 1
     :float left
   .amSelector
+    :width= (!width / 4) - 1
   .pmSelector
+    :width= (!width / 4) - 2
     :border-left solid 1px black
   .closeSelector
     :width= !width / 2
