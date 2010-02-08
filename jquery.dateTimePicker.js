@@ -4,12 +4,12 @@ var DateTimePicker = {
     id = id.replace('_picker','');
     return jQuery('#' + id);
   },
- 
+
   removeWrappersAndStopPropagation: function(event) {
     jQuery('.dateTimePickerWrapper').fadeOut('fast');
     event.stopPropagation();
   },
- 
+
   checkAndRemoveWrapper: function(event) {
     var target = jQuery(event.target);
     if (event.target.tagName === 'INPUT') {
@@ -21,7 +21,7 @@ var DateTimePicker = {
     }
   }
 };
- 
+
 jQuery(function(){
   jQuery('body').focus(function(e) {
     DateTimePicker.checkAndRemoveWrapper(e);
@@ -33,37 +33,37 @@ jQuery(function(){
     var wrapper = jQuery(this).parent();
     DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('clickDay', jQuery(this));
   });
-  
+
   jQuery('.dateTimePickerWrapper .amSelector, .dateTimePickerWrapper .pmSelector').live('click', function() {
     var wrapper = jQuery(this).parent().parent();
     DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('clickAmPm', jQuery(this));
   });
- 
+
   jQuery('.dateTimePickerWrapper .hour').live('click', function() {
     var wrapper = jQuery(this).parent().parent();
     DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('clickHour', jQuery(this));
   });
-  
+
   jQuery('.dateTimePickerWrapper .minute').live('click', function() {
     var wrapper = jQuery(this).parent().parent();
     DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('clickMinute', jQuery(this));
   });
- 
+
   jQuery('.dateTimePickerWrapper .prevYear').live('click',function(){
     var wrapper = jQuery(this).parent().parent();
     DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('changeMonth', -12);
   });
-  
+
   jQuery('.dateTimePickerWrapper .prevMonth').live('click',function(){
     var wrapper = jQuery(this).parent().parent();
     DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('changeMonth', -1);
   });
- 
+
   jQuery('.dateTimePickerWrapper .nextMonth').live('click',function(){
     var wrapper = jQuery(this).parent().parent();
     DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('changeMonth', 1);
   });
- 
+
   jQuery('.dateTimePickerWrapper .nextYear').live('click',function(){
     var wrapper = jQuery(this).parent().parent();
     DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('changeMonth', 12);
@@ -331,7 +331,6 @@ $.widget("ui.dateTimePicker", {
   _getCurrentDate: function() {
     return this._getData('currentDate');
   },
- 
   _getDays: function() {
     return this._getData('days');
   },
