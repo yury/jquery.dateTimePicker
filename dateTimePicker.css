@@ -19,17 +19,23 @@
   .dateTimePickerWrapper .today {
     background: #989898; }
   .dateTimePickerWrapper .selectedHour {
+    color: white;
     background: #880000; }
   .dateTimePickerWrapper .selectedMinute {
+    color: white;
     background: #880000; }
   .dateTimePickerWrapper .selectedAmPm {
+    color: white;
     background: #880000; }
   .dateTimePickerWrapper .selectedDay {
+    color: white;
     background: #880000; }
+  .dateTimePickerWrapper .weekday:hover, .dateTimePickerWrapper .weekend:hover, .dateTimePickerWrapper .minute:hover, .dateTimePickerWrapper .hour:hover, .dateTimePickerWrapper .amSelector:hover, .dateTimePickerWrapper .pmSelector:hover, .dateTimePickerWrapper .closeSelector:hover{
+    background: rgba(136, 0, 0, 0.25); }
   .dateTimePickerWrapper .hour, .dateTimePickerWrapper .minute, .dateTimePickerWrapper .weekday, .dateTimePickerWrapper .weekend, .dateTimePickerWrapper .headerRow, .dateTimePickerWrapper .daysRow, .dateTimePickerWrapper .bufferDay {
     line-height: 16px;
     height: 16px; }
-  .dateTimePickerWrapper .prevYear, .dateTimePickerWrapper .prevMonth, .dateTimePickerWrapper .nextMonth, .dateTimePickerWrapper .nextYear, .dateTimePickerWrapper .weekend, .dateTimePickerWrapper .weekday, .dateTimePickerWrapper .hour, .dateTimePickerWrapper .minute, .dateTimePickerWrapper .amSelector, .dateTimePickerWrapper .pmSelector {
+  .dateTimePickerWrapper .prevYear, .dateTimePickerWrapper .prevMonth, .dateTimePickerWrapper .nextMonth, .dateTimePickerWrapper .nextYear, .dateTimePickerWrapper .weekend, .dateTimePickerWrapper .weekday, .dateTimePickerWrapper .hour, .dateTimePickerWrapper .minute, .dateTimePickerWrapper .amSelector, .dateTimePickerWrapper .pmSelector, .closeSelector {
     cursor: pointer; }
   .dateTimePickerWrapper .headerRow, .dateTimePickerWrapper .daysRow {
     border-bottom: solid 1px black;
