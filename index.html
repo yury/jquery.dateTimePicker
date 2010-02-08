@@ -12,18 +12,18 @@
     </style>
     <script type="text/javascript">
       $(function(){
-        // $('#datetimepicker').dateTimePicker();
+        $('#datetimepicker').dateTimePicker();
         $('#datepicker').dateTimePicker({showTime: false});
-        // $('#timepicker').dateTimePicker({showDate: false});      
+        $('#timepicker').dateTimePicker({showDate: false});
       });
     </script>
   </head>
   <body>
     <h2>jquery.DateTimePicker</h2>
     <p>The design and functionality was inspired by <a href='http://www.simpltry.com/'>Schlu</a>.</p>
-    
+
     <p>The repo is <a href='http://github.com/crankharder/jQuery.dateTimePicker/tree/master'>here</a>.</p>
-    
+
     <p>I would love to have feedback.  Email me at josh dot m dot sharpe at gmail.com.  Thanks!</p>
 
     <h2>The lowdown</h2>
@@ -34,7 +34,7 @@
       <li>A Date Picker</li>
       <li>A Time Picker</li>
     </ul>
-    <p>The idea was to be simple, not flashy and styleable.</p>
+    <p>The goals were to be as simple as possible to use, not particularly flashy, and styleable.</p>
     <p><label for='datetimepicker'>Date-Time Picker</label>   <input type='text' id='datetimepicker' /></p>
     <p><label for='datetimepicker'>Date Picker</label>        <input type='text' id='datepicker' /></p>
     <p><label for='datetimepicker'>Time Picker</label>        <input type='text' id='timepicker' /></p>
@@ -42,12 +42,11 @@
     <h3>Dependencies</h3>
     <ul>
       <li><a href='http://jqueryui.com/download'>jQuery UI</a></li>
-      <li><a href='http://dohpaz.com/flydom/'>FlyDOM</a></li>
     </ul>
-        
+
     <h3>Known Issues</h3>
     <ul>
-      <li>It is possible to insert an unexpected (and invalid) date by 1) selecting a day 2) changing the month 3) selecting hour/minute/ampm</li>
+      <li>None!</li>
     </ul>
   </body>
 </html>
