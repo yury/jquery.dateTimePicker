@@ -5,11 +5,11 @@ jQuery.widget("ui.dateTimePicker", {
     this._setData('viewingMonth', new Date());
     this._getData('viewingMonth').setDate(1);
 
-    this._setData('selectedHour', 8);
-
     this._setData('selectedDate', new Date());
-    this._getData('selectedDate').setHours(this._getData('selectedHour'));
-    this._getData('selectedDate').setMinutes(35);
+    var defaultMinutes = Math.floor(this._getData('selectedDate').getMinutes() / 5) * 5;
+    this._getData('selectedDate').setMinutes(defaultMinutes);
+
+    this._setData('selectedHour', this._getData('selectedDate').getHours() % 12);
 
     var callingElement = this;
     this._setData('callingElement', this);
