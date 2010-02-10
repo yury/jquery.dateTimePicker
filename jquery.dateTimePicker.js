@@ -186,10 +186,11 @@ jQuery.widget("ui.dateTimePicker", {
       totalCount += 1;
     }
 
-    
+    var i = 1;
     while (totalCount % 7 != 0) {
       calendarBody.append($('<div>').attr('class', 'bufferDay').html(i + ''));
       totalCount += 1;
+      i += 1;
     }
 
     return calendarBody;       
