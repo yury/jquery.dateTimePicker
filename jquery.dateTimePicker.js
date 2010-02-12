@@ -34,8 +34,6 @@ jQuery.widget("ui.dateTimePicker", {
       // jQuery('.dateTimePickerWrapper').remove(0);
       callingElement.createDateTimePicker();
     });
-    
-    this._insertVal();
   },
  
   _buildDateAtTime: function(){
@@ -257,7 +255,6 @@ jQuery.widget("ui.dateTimePicker", {
  
     this._insertVal();
   },
- 
   _insertVal: function(){
     if (!this.options.showDate){
       this.element.val(this._buildTime());
