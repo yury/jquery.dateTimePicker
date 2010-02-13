@@ -3,7 +3,6 @@ jQuery.widget("ui.dateTimePicker", {
     months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
     daysInMonth: [31, 28, 31, 30, 31 ,30, 31, 31, 30, 31, 30, 31],
     days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-    // hours: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
     hours: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     minutes: ['00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55'],
     showDate: true,
@@ -30,8 +29,6 @@ jQuery.widget("ui.dateTimePicker", {
  
     this.element.focus(function() {
       DateTimePicker.removeWrappers();
-      // thisPicker._resetDefaults();
-      // jQuery('.dateTimePickerWrapper').remove(0);
       callingElement.createDateTimePicker();
     });
   },
@@ -67,7 +64,7 @@ jQuery.widget("ui.dateTimePicker", {
     if (this._topOffset) {
       
     } else {
-      this._topOffset = offset.top - (wrapper.outerHeight() / 1.7) + this.element.outerHeight() + 'px';
+      this._topOffset = offset.top - (wrapper.outerHeight()) + this.element.outerHeight() + 'px';
     }
     var leftOffset = offset.left + this.element.outerWidth() + 10 + 'px';
     wrapper.attr('style', 'top:' + this._topOffset + ';left:' + leftOffset);    
@@ -313,11 +310,7 @@ jQuery.widget("ui.dateTimePicker", {
     // console.log(this._selectedHour)
     // console.log(this._selectedDate)
  
- 
     this._insertVal();
- 
-    
-    // this.element.val(this._buildTime());
   },
  
   clickHour: function(hourElement) {
@@ -350,12 +343,6 @@ jQuery.widget("ui.dateTimePicker", {
 });
   
 jQuery(function(){
-  // jQuery('body').focus(function(e) {
-  //   DateTimePicker.checkAndRemoveWrapper(e);
-  // }).click(function(e) {
-  //   DateTimePicker.checkAndRemoveWrapper(e);
-  // });
-  
   jQuery('.dateTimePickerWrapper .weekday, .dateTimePickerWrapper .weekend').live('click',function(){
     var wrapper = jQuery(this).closest('.dateTimePickerWrapper');
     DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('clickDay', jQuery(this));
@@ -399,6 +386,12 @@ jQuery(function(){
     var wrapper = jQuery(this).closest('.dateTimePickerWrapper');
     DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('changeMonth', 12);
   });
+
+  jQuery('body, input').focus(function(e) {
+    DateTimePicker.checkAndRemoveWrapper(e);
+  }).click(function(e) {
+    DateTimePicker.checkAndRemoveWrapper(e);
+  });
 });
  
 var DateTimePicker = {
@@ -407,24 +400,26 @@ var DateTimePicker = {
     id = id.replace('_picker','');
     return jQuery('#' + id);
   },
-  
+
   removeWrappers: function(){
     jQuery('.dateTimePickerWrapper').fadeOut('fast');
   },
- 
+
   removeWrappersAndStopPropagation: function(event) {
     this.removeWrappers();
     event.stopPropagation();
   },
- 
+
   checkAndRemoveWrapper: function(event) {
     var target = jQuery(event.target);
-    if (event.target.tagName === 'INPUT') {
-      if (target.data("dateTimePicker") === undefined) {
+    if (target.closest('.dateTimePickerWrapper').length === 0) {
+      if (event.target.tagName === 'INPUT') {
+        if (target.data("dateTimePicker") === undefined) {
+          DateTimePicker.removeWrappers();
+        }
+      } else if (!target.hasClass('.dateTimePickerWrapper') && !target.parent().hasClass('.dateTimePickerWrapper') && !target.parent().parent().hasClass('.dateTimePickerWrapper')) {
         DateTimePicker.removeWrappersAndStopPropagation(event);
       }
-    } else if (!target.hasClass('.dateTimePickerWrapper') && !target.parent().hasClass('.dateTimePickerWrapper') && !target.parent().parent().hasClass('.dateTimePickerWrapper')) {
-      DateTimePicker.removeWrappersAndStopPropagation(event);
     }
   }
 };
