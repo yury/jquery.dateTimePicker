@@ -402,7 +402,7 @@ var DateTimePicker = {
   },
 
   removeWrappers: function(){
-    jQuery('.dateTimePickerWrapper').fadeOut('fast');
+    jQuery('.dateTimePickerWrapper').hide(0);
   },
 
   removeWrappersAndStopPropagation: function(event) {
