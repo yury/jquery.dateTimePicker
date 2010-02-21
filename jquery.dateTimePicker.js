@@ -373,7 +373,6 @@ jQuery.widget("ui.dateTimePicker", {
   clickAmPm: function(ampmElement) {
     ampmElement.parent().children('.selectedAmPm').removeClass('selectedAmPm');
     ampmElement.addClass('selectedAmPm');
-    console.log(this._selectedHour);
 
     if (ampmElement.html() === 'AM') {
       this._am = true;
@@ -448,6 +447,14 @@ jQuery(function(){
   jQuery('.dateTimePickerWrapper .nextYear').live('click',function() {
     var wrapper = jQuery(this).closest('.dateTimePickerWrapper');
     DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('changeMonth', 12);
+  });
+
+  jQuery('.weekend, .weekday, .closeSelector, .hour, .minute, .amSelector, .pmSelector').live('mouseover mouseout', function(event) {
+    if (event.type == 'mouseover') {
+      $(this).addClass('dayHover');
+    } else {
+      $(this).removeClass('dayHover');
+    }
   });
 
   jQuery('body, input').focus(function(e) {
