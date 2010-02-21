@@ -373,7 +373,6 @@ jQuery.widget("ui.dateTimePicker", {
   clickAmPm: function(ampmElement) {
     ampmElement.parent().children('.selectedAmPm').removeClass('selectedAmPm');
     ampmElement.addClass('selectedAmPm');
-    console.log(this._selectedHour);
 
     if (ampmElement.html() === 'AM') {
       this._am = true;
