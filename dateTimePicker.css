@@ -50,6 +50,8 @@
     .dateTimePickerWrapper .daysRow .dayHeading {
       float: left;
       width: 37px; }
+  .dateTimePickerWrapper .dayHover {
+    background-color: pink; }
   .dateTimePickerWrapper .weekend, .dateTimePickerWrapper .weekday, .dateTimePickerWrapper .bufferDay {
     float: left;
     width: 37px; }

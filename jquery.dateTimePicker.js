@@ -449,6 +449,14 @@ jQuery(function(){
     DateTimePicker.dateTimeCallingElement(wrapper).dateTimePicker('changeMonth', 12);
   });
 
+  jQuery('.weekend, .weekday, .closeSelector, .hour, .minute, .amSelector, .pmSelector').live('mouseover mouseout', function(event) {
+    if (event.type == 'mouseover') {
+      $(this).addClass('dayHover');
+    } else {
+      $(this).removeClass('dayHover');
+    }
+  });
+
   jQuery('body, input').focus(function(e) {
     DateTimePicker.checkAndRemoveWrapper(e);
   }).click(function(e) {
